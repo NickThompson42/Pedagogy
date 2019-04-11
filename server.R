@@ -1,18 +1,13 @@
-#
-# This is the server logic of a Shiny web application. You can run the 
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
-
+rm(list = ls())
+cat("\014")
 library(shiny)
+library(httr)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
-  output$grade <- renderTable({
-    data <- read.csv(text=GET("https://raw.githubusercontent.com/NickThompson42/Pedagogy/master/GradeRubric.csv"), header = T;
+  output$gradeTable <- renderTable({
+    data <- "https://raw.githubusercontent.com/NickThompson42/Pedagogy/master/GradeRubric.csv"
+    data <- read.csv(data)
     gradeRubric_df <- data.frame(GradeChar = data$gradeChar, PointsVal = data$pointsValue, Point = data$points)
     gradeRubric_df
   })
@@ -22,6 +17,6 @@ shinyServer(function(input, output) {
 
 
 
-library(httr)
+
 
 nuts <-read.csv(text=GET("https://raw.githubusercontent.com/opetchey/RREEBES/master/Beninca_etal_2008_Nature/data/nutrients_original.csv"), skip=7, header=T)
