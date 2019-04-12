@@ -6,6 +6,13 @@
 #Change defaults to larger=FALSE
 #Julin Maloof
 
+# ref,           the value or values that you want to look for
+# table,         the table where you want to look for it; will look in first column
+# column,        the column that you want the return data to come from,
+# range=FALSE,   if there is not an exact match, return the closest?
+# larger=FALSE   if doing a range lookup, should the smaller or larger key be used?)
+
+if(T){
 vlookup <- function(ref, #the value or values that you want to look for
                     table, #the table where you want to look for it; will look in first column
                     column, #the column that you want the return data to come from,
@@ -34,7 +41,9 @@ vlookup <- function(ref, #the value or values that you want to look for
   dim(output) <- dim(ref)
   output
 }
+} # vlookup() function
 
+if(F){ # Examples
 ###Examples
 
 #create the table of values where we want to do the lookup
@@ -72,3 +81,4 @@ keyF <- data.frame(mic=seq(10,1000,10),
                    pvalue=factor(seq(0,1,length.out=100)))
 
 vlookup(30,table=keyF,column=2,range=T)
+} # Examples - CURRENTLY TURNED OFF
