@@ -105,8 +105,18 @@ selectInput(inputId = "gradingWrite",
                         # this is a number between 0 and 1.
 calcGrade <- function(PointsAssigned, PointsMultiple){
   PointsAllotted = PointsAssigned * PointsMultiple
-  GradeAssigned = vlookup(ref = PointsAllotted, 
-                          table = read.csv(data <- "https://raw.githubusercontent.com/NickThompson42/Pedagogy/master/GradeRubric.csv")
+  GradeAssigned = ifelse(multiple <= 0.66,                    "F",
+                  ifelse(multiple < 0.66  & multiple < 0.7,   "D",
+                  ifelse(multiple >=0.7   & multiple <= 0.72, "C-",
+                  ifelse(multiple >= 0.73 & multiple <= 0.76, "C",
+                  ifelse(multiple >= 0.77 & multiple  <= 0.79,"C+",
+                  ifelse(multiple >= 0.80 & multiple <= 0.82, "B-",
+                  ifelse(multiple >= 0.83 & multiple <= 0.86, "B",
+                  ifelse(multiple >= 0.87 & multiple <= 0.89, "B+",
+                  ifelse(multiple >= 0.90 & multiple <= 0.92, "A-",
+                  ifelse(multiple >= 0.93 & multiple <= 0.96, "A",
+                  ifelse(multiple >= 0.97 & multiple < 1,     "A+",
+                  ifelse(multiple == 1,                       "A++", NA))))))))))))
 )
   function(PointsAllotted)
 }
@@ -121,17 +131,17 @@ add(1,1)
 set.seed(42)
 multiple = sample(1:9, 1, replace = TRUE)/10; multiple
 grade <- ifelse(multiple <= 0.66, "F",
-       ifelse(multiple < 0.66 & multiple < 0.7, "D",
-              ifelse(multiple >=0.7 & multiple <= 0.72, "C-",
-                     ifelse(multiple >= 0.73 & multiple <= 0.76, "C",
-                            ifelse(multiple >= 0.77 &multiple  <= 0.79, "C+",
-                                   ifelse(multiple >= 0.80 & multiple <= 0.82, "B-",
-                                          ifelse(multiple >= 0.83 & multiple <= 0.86, "B",
-                                                 ifelse(multiple >= 0.87 & multiple <= 0.89, "B+",
-                                                        ifelse(multiple >= 0.90 & multiple <= 0.92, "A-",
-                                                               ifelse(multiple >= 0.93 & multiple <= 0.96, "A",
-                                                                      ifelse(multiple >= 0.97 & multiple < 1, "A+",
-                                                                             ifelse(multiple == 1, "A++", NA))))))))))))
+                ifelse(multiple < 0.66 & multiple < 0.7, "D",
+                ifelse(multiple >=0.7 & multiple <= 0.72, "C-",
+                ifelse(multiple >= 0.73 & multiple <= 0.76, "C",
+                ifelse(multiple >= 0.77 &multiple  <= 0.79, "C+",
+                ifelse(multiple >= 0.80 & multiple <= 0.82, "B-",
+                ifelse(multiple >= 0.83 & multiple <= 0.86, "B",
+                ifelse(multiple >= 0.87 & multiple <= 0.89, "B+",
+                ifelse(multiple >= 0.90 & multiple <= 0.92, "A-",
+                ifelse(multiple >= 0.93 & multiple <= 0.96, "A",
+                ifelse(multiple >= 0.97 & multiple < 1, "A+",
+                ifelse(multiple == 1, "A++", NA))))))))))))
 
 
 grade
