@@ -1,0 +1,38 @@
+library(shiny)
+library(dplyr)
+library(xtable)
+library(httr)
+library(stargazer)
+GradeScale_Alpha <- c("A++","A+","A","A-","B+","B","B-","C+","C","C-","D","F")
+
+
+ui <- fluidPage(
+  titlePanel("Multi-Dimensional Grading Calculator"), # titlePanel()
+  sidebarLayout(
+    sidebarPanel("Assigned Points",
+                 sliderInput(inputId = "tagPoints_assigned",
+                             label = "Use the slider to choose the assigned points.",
+                             value = 150,
+                             min = 1,
+                             max = 300), # sliderInput()
+                 selectInput(inputId = "tagContent_grade",
+                             label = "Use the dropdown to assign a Content grade",
+                             choices = GradeScale_Alpha,
+                             selectize = F), # selectInput(tagContent_grade)
+                 selectInput(inputId = "tagOrganization_grade",
+                             label = "Use the dropdown to assign a Organization grade",
+                             choices = GradeScale_Alpha,
+                             selectize = F), # selectInput(tagOrganization_grade)
+                 selectInput(inputId = "tagWriting_grade",
+                             label = "Use the dropdown to assign a Writing grade",
+                             choices = GradeScale_Alpha,
+                             selectize = F) # selectInput(tagWriting_grade)
+                 ), # sidebarPanel()
+    mainPanel("Main Panel",
+              tableOutput(outputId = "tagGradeTable_out")) # mainPanel()
+  ) #sidebarLayout()
+) # fluidPage()
+
+server <- function(input,output){} # function(input,output){}
+
+shinyApp(ui = ui, server = server)
