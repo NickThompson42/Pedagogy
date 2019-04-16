@@ -1,0 +1,10 @@
+name: gradecalculatorwebapp
+title:
+username:
+account: rshinywebapps42
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 867385
+bundleId: 2014135
+url: https://rshinywebapps42.shinyapps.io/gradecalculatorwebapp/
+when: 1555375858.26789
