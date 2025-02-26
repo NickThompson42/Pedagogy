@@ -1,0 +1,34 @@
+[ ] Create `routes.py` in `app/` to handle web endpoints:
+    - /api-key-config (UI for adding/removing/persisting API keys)
+    - /upload (Endpoint or form for batch uploading papers in PDF/DOCX)
+    - /grade (Endpoint for AI grading logic with selected rubric)
+    - Potential routes for showing a "dashboard" of graded papers
+
+[ ] Add templates:
+    - api_key_config.html (to manage developer vs. user keys)
+    - upload_form.html (to select and batch-upload papers)
+    - results_page.html (to show AI feedback/grades)
+
+[ ] Integrate `key_manager.py` into your routes:
+    - Import your existing get_active_key(), add_user_key(), remove_user_key() etc.
+    - Make sure the correct key is used when calling the AI.
+
+[ ] Build out AI grading module:
+    - If not done, write a function to process PDF/DOCX, extract text, and call GPT/OpenAI with the active key.
+    - Possibly store results in a database or show them immediately.
+
+[ ] Docker cleanup:
+    - Validate `Dockerfile` builds and runs your app end-to-end.
+    - Confirm .gitignore includes local_keys/ folder.
+
+[ ] Testing:
+    - Write basic tests for key_manager logic.
+    - Test route endpoints with mock files or requests.
+
+[ ] UI Enhancements:
+    - Add user-friendly error messages (e.g., if no key is active).
+    - Display progress or logs when batch processing large sets of papers.
+
+[ ] Documentation:
+    - Update README.Rmd with any new instructions or changes.
+    - Possibly add short usage instructions for the Docker image.

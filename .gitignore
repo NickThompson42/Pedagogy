@@ -1,0 +1,67 @@
+# -------------------------
+#  Python & Docker Project
+# -------------------------
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+.venv*/
+
+# Editor / IDE files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.iml
+
+# Docker
+*.log
+docker-compose.override.yml
+.env
+
+# -------------------------
+#  Local Keys / Secrets
+# -------------------------
+local_keys/
+local_keys/*
+
+# If you need to specifically ignore certain files:
+# local_keys/dev_key.txt
+# local_keys/api_keys.json
+
+# -------------------------
+#  OS files
+# -------------------------
+.DS_Store
+Thumbs.db
+EOF

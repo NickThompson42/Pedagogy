@@ -1,0 +1,40 @@
+---
+title: "GradeCalculatorApp: Python Edition"
+author: "Your Name"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output:
+  github_document:
+    toc: true
+    toc_depth: 3
+---
+
+# Overview
+
+Welcome to the **GradeCalculatorApp** (Python edition), migrated from the original R-based Shiny application.  
+This application allows for:
+
+1. **Classic Grade Calculation**: Replicating the logic from the R app for weighted grade computations.
+2. **AI-based Grading**: Interacting with a Large Language Model (LLM) API to assess student papers against configurable rubrics.
+
+## File Structure
+
+```bash
+GradeCalculatorApp/
+├── app/
+│   ├── __init__.py
+│   ├── routes.py          # Flask routes (or Django views) for web endpoints
+│   ├── models.py          # Database models & ORM classes
+│   ├── grade_calculations/
+│   │   ├── __init__.py
+│   │   └── weighting.py   # Python logic migrated from the R calcGrade scripts
+│   └── ai_grading/
+│       ├── __init__.py
+│       ├── rubric_manager.py  # Manages retrieving/storing rubrics in DB
+│       └── paper_grader.py    # AI calls to evaluate text against rubrics
+├── templates/
+│   └── ...                # Jinja2 or Django templates for rendering the UI
+├── static/
+│   └── ...                # Any static files (CSS, JS, images, etc.)
+├── config.py              # Configuration (API keys, DB connections)
+├── requirements.txt       # Python dependencies
+└── run.py                 # Launch script for the app
